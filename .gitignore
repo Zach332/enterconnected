@@ -34,3 +34,6 @@ build/
 
 ### Astra secure connect file ###
 secure-connect-hoohacks2021.zip
+
+### App engine config ###
+app.yaml
