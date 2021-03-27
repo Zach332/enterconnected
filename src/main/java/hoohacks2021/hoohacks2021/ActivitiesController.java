@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import hoohacks2021.hoohacks2021.database.Database;
+import hoohacks2021.hoohacks2021.database.entity.Activity;
+
 @RestController
 public class ActivitiesController {
     
@@ -18,7 +21,7 @@ public class ActivitiesController {
     public void addActivity(
         @PathVariable("activityName") String activityName
     ) {
-        database.addActivity(activityName);
+        database.addActivity(new Activity(activityName));
     }
 
     @GetMapping("/api/activities")

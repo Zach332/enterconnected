@@ -1,19 +1,23 @@
-package hoohacks2021.hoohacks2021;
+package hoohacks2021.hoohacks2021.database;
 
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import com.datastax.oss.driver.api.core.CqlSession;
-import com.datastax.oss.driver.api.core.cql.ResultSet;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+import hoohacks2021.hoohacks2021.database.dao.ActivityDAO;
+import hoohacks2021.hoohacks2021.database.entity.Activity;
 
 @Component
 public class Database {
     
     CqlSession session;
+    
+    ActivityDAO activityDAO;
 
     public Database(
         @Value("${hoohacks2021.astra.secureConnectionLocation}") String secureConnectLocation, 
@@ -25,16 +29,20 @@ public class Database {
             .withAuthCredentials(username, password)
             .withKeyspace("production")
             .build();
+        
+        DAOMapper databaseMapper = new DatabaseMapperBuilder(session).build();
+        activityDAO = databaseMapper.activityDAO();
     }
 
-    public void addActivity(String activityName) {
-        session.execute("insert into activities (name) VALUES('" + activityName + "');");
+    // Activities
+
+    public void addActivity(Activity activity) {
+        activityDAO.save(activity);
     }
 
     public List<String> getActivities() {
-        ResultSet rs = session.execute("select * from activities;");
-        return rs.all().stream()
-            .map(row -> row.getString("name"))
+        return activityDAO.all().all().stream()
+            .map(activity -> activity.getName())
             .collect(Collectors.toList());
     }
 }
