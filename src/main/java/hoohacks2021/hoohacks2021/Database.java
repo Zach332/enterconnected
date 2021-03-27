@@ -1,10 +1,11 @@
 package hoohacks2021.hoohacks2021;
 
 import java.nio.file.Paths;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import com.datastax.oss.driver.api.core.CqlSession;
 import com.datastax.oss.driver.api.core.cql.ResultSet;
-import com.datastax.oss.driver.api.core.cql.Row;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -26,13 +27,14 @@ public class Database {
             .build();
     }
 
-    public String getReleaseVersion() {
-        ResultSet rs = session.execute("select release_version from system.local");
-        Row row = rs.one();
-        if (row != null) {
-            return row.getString("release_version");
-        } else {
-            throw new IllegalStateException();
-        }
+    public void addActivity(String activityName) {
+        session.execute("insert into activities (name) VALUES('" + activityName + "');");
+    }
+
+    public List<String> getActivities() {
+        ResultSet rs = session.execute("select * from activities;");
+        return rs.all().stream()
+            .map(row -> row.getString("name"))
+            .collect(Collectors.toList());
     }
 }

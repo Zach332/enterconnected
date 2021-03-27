@@ -9,5 +9,4 @@ public class Hoohacks2021Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Hoohacks2021Application.class, args);
 	}
-
 }
