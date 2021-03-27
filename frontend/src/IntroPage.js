@@ -1,9 +1,7 @@
 import Activity1 from "./images/activity1.jpg"
 import { toQuery } from "./Routing";
-import { useLocation } from 'react-router-dom';
 export default function LoginLandingGithub() {
     var background = Activity1
-    let location = useLocation();
 
     const onClickGoogle = () => {
         window.location.href =
@@ -15,7 +13,7 @@ export default function LoginLandingGithub() {
             "449086482050-sadfuvcq2nudv6in6n25l8srn89bn28e.apps.googleusercontent.com",
         scope: "https://www.googleapis.com/auth/userinfo.email",
         response_type: "token",
-        redirect_uri: window.location.origin + "/login/oauth2/code/google",
+        redirect_uri: window.location.href.substring(0,window.location.href.length - 3),
     });
 
     return (

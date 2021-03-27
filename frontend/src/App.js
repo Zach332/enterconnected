@@ -11,7 +11,6 @@ function App() {
         <div className="App">
             <Switch>
                 <Route path="/" exact component={IntroPage} />
-                <Route path="/login/oauth2/code/google" exact component={LoginLanding} />
                 <Route component={Home} />
             </Switch>
         </div>
