@@ -11,6 +11,7 @@ function App() {
         <div className="App">
             <Switch>
                 <Route path="/" exact component={IntroPage} />
+                <Route path="/:id" exact component={LoginLanding} />
                 <Route component={Home} />
             </Switch>
         </div>
