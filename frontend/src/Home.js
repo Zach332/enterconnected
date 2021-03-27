@@ -22,6 +22,11 @@ export default function Home() {
 
     return <div>
         <Navbar />
+        <div className="bg-light p-3 text-center w-75 mx-auto">
+            <h1>Welcome to enterconnected, User!</h1>
+            <p>Organize activities with friends without worrying about your friends' availability or interest.</p>
+            <p>Just add what activities you want to do when, and we'll notify you if your friends also added those activities and are available at those times.</p>
+        </div>
         <div className="d-flex align-items-center">
             <div className="me-auto p-2 ms-5">
                 <h1>Home</h1>
