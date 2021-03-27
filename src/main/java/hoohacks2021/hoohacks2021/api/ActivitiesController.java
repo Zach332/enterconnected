@@ -1,4 +1,4 @@
-package hoohacks2021.hoohacks2021;
+package hoohacks2021.hoohacks2021.api;
 
 import java.util.List;
 
