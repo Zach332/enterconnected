@@ -30,7 +30,7 @@ public class Database {
             .withKeyspace("production")
             .build();
         
-        DAOMapper databaseMapper = new DatabaseMapperBuilder(session).build();
+        DAOMapper databaseMapper = new DAOMapperBuilder(session).build();
         activityDAO = databaseMapper.activityDAO();
     }
 

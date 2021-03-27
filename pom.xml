@@ -15,6 +15,7 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
+		<datastax.java-driver.version>4.10.0</datastax.java-driver.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -31,25 +32,25 @@
 		<dependency>
 			<groupId>com.datastax.oss</groupId>
 			<artifactId>java-driver-core</artifactId>
-			<version>4.10.0</version>
+			<version>${datastax.java-driver.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.datastax.oss</groupId>
 			<artifactId>java-driver-query-builder</artifactId>
-			<version>4.10.0</version>
+			<version>${datastax.java-driver.version}</version>
 		</dependency>
 		  
 		<dependency>
 			<groupId>com.datastax.oss</groupId>
 			<artifactId>java-driver-mapper-processor</artifactId>
-			<version>4.10.0</version>
+			<version>${datastax.java-driver.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.datastax.oss</groupId>
 			<artifactId>java-driver-mapper-runtime</artifactId>
-			<version>4.10.0</version>
+			<version>${datastax.java-driver.version}</version>
 		</dependency>
 
 	</dependencies>
@@ -63,7 +64,6 @@
 
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
 				<configuration>
 				  <source>11</source> <!-- (or higher) -->
 				  <target>11</target> <!-- (or higher) -->
@@ -71,7 +71,7 @@
 					<path>
 					  <groupId>com.datastax.oss</groupId>
 					  <artifactId>java-driver-mapper-processor</artifactId>
-					  <version>4.10.0</version>
+					  <version>${datastax.java-driver.version}</version>
 					</path>
 					<!-- Optional: add this if you want to avoid the SLF4J warning "Failed to load class
 					  StaticLoggerBinder, defaulting to no-operation implementation" when compiling. -->
