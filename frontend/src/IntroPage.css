@@ -1,0 +1,176 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.panel {
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    color: white;
+    height: 100%;
+    min-width: 100%;
+    text-align: center;
+    display: table;
+    margin: 0;
+    background: #1c1c1c;
+    padding: 0 0;
+}
+
+.panel .inner {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.backgroundimg {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+}
+
+#back1 {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("./images/activity1.jpg") no-repeat center;
+    background-size: cover;
+}
+
+#back2 {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("./images/activity2.jpg") no-repeat center;
+    background-size: cover;
+}
+
+#back3 {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("./images/activity3.jpg") no-repeat center;
+    background-size: cover;
+}
+
+#back4 {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("./images/activity4.jpg") no-repeat center;
+    background-size: cover;
+}
+
+#back5 {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("./images/activity5.jpg") no-repeat center;
+    background-size: cover;
+}
+
+#back6 {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("./images/activity6.jpg") no-repeat center;
+    background-size: cover;
+}
+
+#back7{
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("./images/activity7.jpg") no-repeat center;
+    background-size: cover;
+}
+
+#back8 {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("./images/activity8.jpg") no-repeat center;
+    background-size: cover;
+}
+
+#back9 {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("./images/activity9.jpg") no-repeat center;
+    background-size: cover;
+}
+
+@keyframes backgroundchangeFadeInOut {
+    0% {
+        opacity:1;
+    }
+    17% {
+        opacity:1;
+    }
+    25% {
+        opacity:0;
+    }
+    92% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+}
+
+@-webkit-keyframes backgroundchangeFadeInOut {
+    0% {
+        opacity:1;
+    }
+    17% {
+        opacity:1;
+    }
+    25% {
+        opacity:0;
+    }
+    92% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+}
+#backgroundchange div:nth-of-type(1) {
+    animation-delay: 16s;
+    -webkit-animation-delay: 16s;
+}
+#backgroundchange div:nth-of-type(2) {
+    animation-delay: 14s;
+    -webkit-animation-delay: 14s;
+}
+#backgroundchange div:nth-of-type(3) {
+    animation-delay: 12s;
+    -webkit-animation-delay: 12s;
+}
+#backgroundchange div:nth-of-type(4) {
+    animation-delay: 10s;
+    -webkit-animation-delay: 10s;
+}
+
+#backgroundchange div:nth-of-type(5) {
+    animation-delay: 8s;
+    -webkit-animation-delay: 8s;
+}
+
+#backgroundchange div:nth-of-type(6) {
+    animation-delay: 6s;
+    -webkit-animation-delay: 6s;
+}
+
+#backgroundchange div:nth-of-type(7) {
+    animation-delay: 4s;
+    -webkit-animation-delay: 4s;
+}
+
+#backgroundchange div:nth-of-type(8) {
+    animation-delay: 2s;
+    -webkit-animation-delay: 2s;
+}
+
+#backgroundchange div:nth-of-type(9) {
+    animation-delay: 0s;
+    -webkit-animation-delay: 0s;
+}
+
+#backgroundchange div {
+    animation-name: backgroundchangeFadeInOut;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-duration: 16s;
+
+    -webkit-animation-name: backgroundchangeFadeInOut;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 16s;
+
+}
+
+#welcomeContent {
+    position: absolute;
+    /*left: 50%;*/
+    width: 100%;
+    z-index: 2;
+}
