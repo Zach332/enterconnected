@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/HooHacks2021/static/css/main.c2e6e31d.chunk.css",
-    "main.js": "/HooHacks2021/static/js/main.bbee159f.chunk.js",
-    "main.js.map": "/HooHacks2021/static/js/main.bbee159f.chunk.js.map",
-    "runtime-main.js": "/HooHacks2021/static/js/runtime-main.c77229bb.js",
-    "runtime-main.js.map": "/HooHacks2021/static/js/runtime-main.c77229bb.js.map",
-    "static/js/2.9b1b8cc8.chunk.js": "/HooHacks2021/static/js/2.9b1b8cc8.chunk.js",
-    "static/js/2.9b1b8cc8.chunk.js.map": "/HooHacks2021/static/js/2.9b1b8cc8.chunk.js.map",
-    "static/js/3.5bd0b7de.chunk.js": "/HooHacks2021/static/js/3.5bd0b7de.chunk.js",
-    "static/js/3.5bd0b7de.chunk.js.map": "/HooHacks2021/static/js/3.5bd0b7de.chunk.js.map",
-    "index.html": "/HooHacks2021/index.html",
-    "static/css/main.c2e6e31d.chunk.css.map": "/HooHacks2021/static/css/main.c2e6e31d.chunk.css.map",
-    "static/js/2.9b1b8cc8.chunk.js.LICENSE.txt": "/HooHacks2021/static/js/2.9b1b8cc8.chunk.js.LICENSE.txt",
-    "static/media/activity1.e2bc9030.jpg": "/HooHacks2021/static/media/activity1.e2bc9030.jpg",
-    "static/media/logo.6ce24c58.svg": "/HooHacks2021/static/media/logo.6ce24c58.svg"
+    "main.css": "/enterconnected/static/css/main.c2e6e31d.chunk.css",
+    "main.js": "/enterconnected/static/js/main.bbee159f.chunk.js",
+    "main.js.map": "/enterconnected/static/js/main.bbee159f.chunk.js.map",
+    "runtime-main.js": "/enterconnected/static/js/runtime-main.b4349b1c.js",
+    "runtime-main.js.map": "/enterconnected/static/js/runtime-main.b4349b1c.js.map",
+    "static/js/2.9b1b8cc8.chunk.js": "/enterconnected/static/js/2.9b1b8cc8.chunk.js",
+    "static/js/2.9b1b8cc8.chunk.js.map": "/enterconnected/static/js/2.9b1b8cc8.chunk.js.map",
+    "static/js/3.5bd0b7de.chunk.js": "/enterconnected/static/js/3.5bd0b7de.chunk.js",
+    "static/js/3.5bd0b7de.chunk.js.map": "/enterconnected/static/js/3.5bd0b7de.chunk.js.map",
+    "index.html": "/enterconnected/index.html",
+    "static/css/main.c2e6e31d.chunk.css.map": "/enterconnected/static/css/main.c2e6e31d.chunk.css.map",
+    "static/js/2.9b1b8cc8.chunk.js.LICENSE.txt": "/enterconnected/static/js/2.9b1b8cc8.chunk.js.LICENSE.txt",
+    "static/media/activity1.e2bc9030.jpg": "/enterconnected/static/media/activity1.e2bc9030.jpg",
+    "static/media/logo.6ce24c58.svg": "/enterconnected/static/media/logo.6ce24c58.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.c77229bb.js",
+    "static/js/runtime-main.b4349b1c.js",
     "static/js/2.9b1b8cc8.chunk.js",
     "static/css/main.c2e6e31d.chunk.css",
     "static/js/main.bbee159f.chunk.js"
