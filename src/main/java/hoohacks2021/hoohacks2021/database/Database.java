@@ -127,7 +127,7 @@ public class Database {
                 finalActivity.setStartTime(eventStartTimeFinal);
                 finalActivity.setEndTime(eventEndTimeFinal);
                 List<String> finalParticipants = participants;
-                finalParticipants.removeIf(p -> p.equals(getUser(newAvailability.getUserId()).getFirstName()));
+                finalParticipants.removeIf(p -> p.equals(getUser(finalActivity.getUserId()).getFirstName()));
                 finalActivity.setParticipants(finalParticipants);
                 activityAvailabilityDAO.updateActivityAvailability(finalActivity);
             }
