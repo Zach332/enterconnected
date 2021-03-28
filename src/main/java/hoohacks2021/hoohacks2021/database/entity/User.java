@@ -20,6 +20,7 @@ public class User {
     public User() { }
 
     public User(String email, String firstName, String lastName) {
+        this.id = UUID.randomUUID();
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
