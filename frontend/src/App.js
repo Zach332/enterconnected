@@ -5,6 +5,7 @@ import IntroPage from "./IntroPage"
 import Home from './Home';
 import AddActivityAvailability from './AddActivityAvailability';
 import ScheduledActivites from "./ScheduledActivities"
+import About from "./About"
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
                 <Route path="/" exact component={IntroPage} />
                 <Route path="/addActivityAvailability" exact component={AddActivityAvailability} />
                 <Route path="/scheduled" exact component={ScheduledActivites} />
+                <Route path="/about" exact component={About} />
                 <Route component={Home} />
             </Switch>
             <div className="p-3"></div>

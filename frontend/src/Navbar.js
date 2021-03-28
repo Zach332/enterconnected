@@ -37,6 +37,13 @@ export default function Navbar() {
                         >
                             Scheduled activities
                         </NavLink>
+                        <NavLink
+                            className="nav-item nav-link"
+                            activeClassName="nav-item nav-link active"
+                            to="/about"
+                        >
+                            About
+                        </NavLink>
                     </ul>
                     {user.id != null && <ul className="navbar-nav ms-auto" id="navbarLogin">
                         <li className="navbar-btn">
