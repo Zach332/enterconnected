@@ -86,9 +86,12 @@ public class Database {
         possiblyHappeningAvailabilities.add(newAvailability);
         int requiredNumberOfParticipants = newAvailability.getMinimumNumberOfParticipants();
         for (ActivityAvailability availability : activityAvailabilities) {
+            if (availability.getId().equals(newAvailability.getId())) {
+                continue;
+            }
             if (
                 availability.getRangeStartTime() < newAvailability.getRangeEndTime() && 
-                availability.getRangeEndTime() > newAvailability.getRangeEndTime()
+                availability.getRangeEndTime() > newAvailability.getRangeStartTime()
             ) {
                 if (
                     possiblyHappeningAvailabilities.size() >= requiredNumberOfParticipants &&
