@@ -1,7 +1,15 @@
 import NameLogo from "./Logo.png";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useHistory } from "react-router-dom";
+import { logout, useGlobalState } from './State';
 
 export default function Navbar() {
+    let history = useHistory();
+    const [user] = useGlobalState("user");
+
+    const startLogout = () => {
+        logout();
+        history.push("/")
+    }
 
     return (
         <div>
@@ -30,6 +38,16 @@ export default function Navbar() {
                             Scheduled activities
                         </NavLink>
                     </ul>
+                    {user.id != null && <ul className="navbar-nav ms-auto" id="navbarLogin">
+                        <li className="navbar-btn">
+                            <Link
+                                onClick={startLogout}
+                                className="btn btn-outline-danger my-2 my-sm-0"
+                            >
+                                Log out
+                            </Link>
+                        </li>
+                    </ul>}
                 </div>
             </nav>
         </div>

@@ -30,6 +30,7 @@ export const login = (firstName, id) => {
 };
 
 export const logout = () => {
+    localStorage.setItem(userPersistenceKey, JSON.stringify(firstUserState));
     setGlobalState("user", firstUserState);
     axios.defaults.headers.common["authorization"] = null;
 };
