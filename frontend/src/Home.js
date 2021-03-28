@@ -1,7 +1,7 @@
 import Navbar from './Navbar';
 import { useEffect, useState } from "react";
 import { toParams } from "./Routing";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { login, useGlobalState } from "./State";
 import axios from 'axios';
 import Spinner from './Spinner';
@@ -44,6 +44,13 @@ export default function Home() {
 
     return (<div>
         <Navbar />
+        {user.id == null && <div className="bg-secondary p-3 text-center w-50 mx-auto">
+            It looks like you haven't logged in. You won't be able to see or do much without an account.
+            <div className="p-2"/>
+            <Link className="btn btn-primary btn-md" to="/" role="button">
+                Log in here!
+            </Link>
+        </div>}
         <div className="bg-light p-3 text-center w-75 mx-auto">
             <h1>Welcome to EnterConnected, {user.firstName}!</h1>
             <p>Organize activities with friends without worrying about your friends' availability or interest.</p>
