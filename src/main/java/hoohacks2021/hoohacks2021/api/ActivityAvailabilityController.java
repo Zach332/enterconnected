@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,7 +29,7 @@ public class ActivityAvailabilityController {
     @PostMapping("/api/activity-availability/new")
     public void addActivityAvailability(
         @RequestHeader("authorization") String userId,
-        ActivityAvailability activityAvailability
+        @RequestBody ActivityAvailability activityAvailability
     ) {
         ActivityAvailability newActivityAvailability = new ActivityAvailability(
             UUID.fromString(userId), 
