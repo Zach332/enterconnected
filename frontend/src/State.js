@@ -20,6 +20,7 @@ axios.defaults.headers.common["authorization"] = initialState.user.id;
 const { setGlobalState, useGlobalState } = createGlobalState(initialState);
 
 export const login = (firstName, id) => {
+    localStorage.setItem(userPersistenceKey, JSON.stringify({firstName, id}));
     setGlobalState("user", (v) => ({
         ...v,
         firstName: firstName,

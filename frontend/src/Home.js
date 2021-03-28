@@ -1,13 +1,15 @@
 import Navbar from './Navbar';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { toParams } from "./Routing";
 import { useHistory } from "react-router-dom";
 import { login, useGlobalState } from "./State";
 import axios from 'axios';
+import Spinner from './Spinner';
 
 export default function Home() {
     const [user] = useGlobalState("user");
     let history = useHistory();
+    const [status, setStatus] = useState("loading");
     useEffect(() => {
         const params = toParams(window.location.hash.replace(/^#/, ""));
         handleLogin(params);
@@ -24,14 +26,23 @@ export default function Home() {
                         response.data.firstName,
                         response.data.id
                     );
+                    setStatus("loaded")
                     history.push("/home")
                 });
+        } else {
+            setStatus("loaded")
         }
     };
 
     let activityAvailabilities = [];
 
-    return <div>
+    if(status == "loading") {
+        return (
+            <Spinner />
+        )
+    }
+
+    return (<div>
         <Navbar />
         <div className="bg-light p-3 text-center w-75 mx-auto">
             <h1>Welcome to EnterConnected, {user.firstName}!</h1>
@@ -73,5 +84,5 @@ export default function Home() {
                 ))}
             </div>
         </div>
-    </div>;
+    </div>);
 }
