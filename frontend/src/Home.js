@@ -5,6 +5,7 @@ import { useHistory, Link } from "react-router-dom";
 import { login, useGlobalState } from "./State";
 import axios from 'axios';
 import Spinner from './Spinner';
+import ActivityAvailabilityCard from './ActivityAvailabilityCard';
 
 export default function Home() {
     const [user] = useGlobalState("user");
@@ -18,7 +19,7 @@ export default function Home() {
 
     useEffect(() => {
         axios
-            .get("api/activity-availability")
+            .get("https://hoohacks2021-308917.ue.r.appspot.com/api/activity-availability")
             .then((response) => {
                 setActivityAvailabilities(response.data);
             });
@@ -97,7 +98,7 @@ export default function Home() {
         {activityAvailabilities != null && activityAvailabilities.length > 0 ? <div className="container">
             <div className="row">
                 {activityAvailabilities.map((activity) => (
-                    <div/>
+                    <ActivityAvailabilityCard activityAvailability={activity} />
                 ))}
             </div>
         </div> :
