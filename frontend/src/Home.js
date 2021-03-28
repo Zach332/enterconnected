@@ -2,9 +2,11 @@ import Navbar from './Navbar';
 import { useEffect } from "react";
 import { toParams } from "./Routing";
 import { useHistory } from "react-router-dom";
-
+import { login, useGlobalState } from "./State";
+import axios from 'axios';
 
 export default function Home() {
+    const [user] = useGlobalState("user");
     let history = useHistory();
     useEffect(() => {
         const params = toParams(window.location.hash.replace(/^#/, ""));
@@ -12,9 +14,18 @@ export default function Home() {
     }, []);
 
     const handleLogin = (data) => {
-        console.log(data)
         if (data.access_token) {
-            history.push("/home")
+            axios
+                .post("https://hoohacks2021-308917.ue.r.appspot.com/api/login/google", {
+                    token: data.access_token,
+                })
+                .then((response) => {
+                    login(
+                        response.data.firstName,
+                        response.data.id
+                    );
+                    history.push("/home")
+                });
         }
     };
 
@@ -23,7 +34,7 @@ export default function Home() {
     return <div>
         <Navbar />
         <div className="bg-light p-3 text-center w-75 mx-auto">
-            <h1>Welcome to enterconnected, User!</h1>
+            <h1>Welcome to EnterConnected, {user.firstName}!</h1>
             <p>Organize activities with friends without worrying about your friends' availability or interest.</p>
             <p>Just add what activities you want to do when, and we'll notify you if your friends also added those activities and are available at those times.</p>
         </div>

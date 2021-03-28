@@ -6,7 +6,7 @@ export default function Navbar() {
     return (
         <div>
             <nav className="navbar navbar-expand-sm navbar-dark bg-dark justify-content-between mb-3 px-2">
-                <Link className="navbar-brand" to="/">
+                <Link className="navbar-brand" to="/home">
                     <img src={NameLogo} height="35" alt="projectideas" />
                 </Link>
                 <button
