@@ -64,6 +64,6 @@ export default function Home() {
                 ))}
             </div>
         </div> :
-        <div className="ms-5">You don't have any upcoming scheduled activities. <Link to="/addActivityAvailability">Add to your availability</Link>!</div>}
+        <div className="ms-5 p-2">You don't have any upcoming scheduled activities. <Link to="/addActivityAvailability">Add to your availability</Link>!</div>}
     </div>);
 }
