@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 export default function AddNewActivityType() {
     const [activities, setActivities] = React.useState([]);
     const [form, setForm] = React.useState({
+        act: "",
+        mp: "2",
         sd: "",
         ed: "",
         st: "",
@@ -43,12 +45,17 @@ export default function AddNewActivityType() {
                 <p>We'll add your availability to our database, but your availability will not be publicly posted. If a friend is available for the same activity at an overlapping time, we'll notify both of you, and add the activity to your {<Link to="/scheduled">scheduled activities</Link>}!</p>
                 <div>
                     <label className="form-label">Activity Name</label>
-                    <input className="form-control" list="activeList" name="myBrowser" placeholder="Enter Name of Activity..." />
+                    <input className="form-control" id="act" value={form.act} list="activeList" name="myBrowser" placeholder="Enter Name of Activity..." />
                     <datalist id="activeList">
                         {activities.map((activity) => (
                             <option key={activity} value={activity} />
                         ))}
                     </datalist>
+                </div>
+                <hr />
+                <div>
+                    <label className="form-label">Minimum Number of People</label>
+                    <input className="form-control" type="number" min="2" id="mp" value={form.mp} placeholder="Enter Number (including yourself)" />
                 </div>
                 <hr />
                 <div>
@@ -64,7 +71,8 @@ export default function AddNewActivityType() {
                     <label className="form-label">End Time</label>
                     <input id="et" value={form.et} className="form-control" type="time" onChange={handleInputChange} />
                     <br />
-                    <button type="submit" className="btn btn-primary" disabled={form.sd === "" || form.ed === "" || form.st === "" || form.et === ""}
+                    <button type="submit" className="btn btn-primary"
+                            disabled={form.sd === "" || form.ed === "" || form.st === "" || form.et === "" || form.mp === "" || form.act === ""}
                             onClick={submitButtonClicked}>Submit</button>
                 </div>
             </div>
