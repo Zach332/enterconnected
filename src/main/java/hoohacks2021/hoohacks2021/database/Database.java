@@ -10,9 +10,11 @@ import com.datastax.oss.driver.api.core.CqlSession;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import hoohacks2021.hoohacks2021.database.dao.ActivityAvailabilityDAO;
 import hoohacks2021.hoohacks2021.database.dao.ActivityDAO;
 import hoohacks2021.hoohacks2021.database.dao.UserDAO;
 import hoohacks2021.hoohacks2021.database.entity.Activity;
+import hoohacks2021.hoohacks2021.database.entity.ActivityAvailability;
 import hoohacks2021.hoohacks2021.database.entity.User;
 
 @Component
@@ -22,6 +24,7 @@ public class Database {
     
     UserDAO userDAO;
     ActivityDAO activityDAO;
+    ActivityAvailabilityDAO activityAvailabilityDAO;
 
     public Database(
         @Value("${hoohacks2021.astra.secureConnectionLocation}") String secureConnectLocation, 
@@ -37,6 +40,7 @@ public class Database {
         DAOMapper daoMapper = new DAOMapperBuilder(session).build();
         userDAO = daoMapper.userDAO();
         activityDAO = daoMapper.activityDAO();
+        activityAvailabilityDAO = daoMapper.activityAvailabilityDAO();
     }
 
     // Users
@@ -63,5 +67,15 @@ public class Database {
         return activityDAO.all().all().stream()
             .map(activity -> activity.getName())
             .collect(Collectors.toList());
+    }
+
+    // Activity availabilities
+
+    public void addActivityAvailability(ActivityAvailability activityAvailability) {
+        activityAvailabilityDAO.save(activityAvailability);
+    }
+
+    public List<ActivityAvailability> getActivityAvailabilitiesForUser(String userId) {
+        return activityAvailabilityDAO.findByUserId(UUID.fromString(userId)).all();
     }
 }
