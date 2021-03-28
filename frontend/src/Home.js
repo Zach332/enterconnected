@@ -23,7 +23,7 @@ export default function Home() {
             .then((response) => {
                 setActivityAvailabilities(response.data);
             });
-    }, []);
+    }, [status]);
 
     const handleLogin = (data) => {
         if (data.access_token) {
