@@ -1,29 +1,62 @@
 import Navbar from './Navbar';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { toParams } from "./Routing";
-import { useHistory } from "react-router-dom";
-
+import { useHistory, Link } from "react-router-dom";
+import { login, useGlobalState } from "./State";
+import axios from 'axios';
+import Spinner from './Spinner';
 
 export default function Home() {
+    const [user] = useGlobalState("user");
     let history = useHistory();
+    const [status, setStatus] = useState("loading");
     useEffect(() => {
         const params = toParams(window.location.hash.replace(/^#/, ""));
         handleLogin(params);
     }, []);
 
     const handleLogin = (data) => {
-        console.log(data)
         if (data.access_token) {
-            history.push("/home")
+            axios
+                .post("https://hoohacks2021-308917.ue.r.appspot.com/api/login/google", {
+                    token: data.access_token,
+                })
+                .then((response) => {
+                    login(
+                        response.data.firstName,
+                        response.data.id
+                    );
+                    setStatus("loaded")
+                    history.push("/home")
+                });
+        } else {
+            setStatus("loaded")
         }
     };
 
+    const addActivityAvailability = () => {
+        history.push("/addActivityAvailability")
+    }
+
     let activityAvailabilities = [];
 
-    return <div>
+    if(status == "loading") {
+        return (
+            <Spinner />
+        )
+    }
+
+    return (<div>
         <Navbar />
+        {user.id == null && <div className="bg-secondary p-3 text-center w-50 mx-auto">
+            It looks like you haven't logged in. You won't be able to see or do much without an account.
+            <div className="p-2"/>
+            <Link className="btn btn-primary btn-md" to="/" role="button">
+                Log in here!
+            </Link>
+        </div>}
         <div className="bg-light p-3 text-center w-75 mx-auto">
-            <h1>Welcome to enterconnected, User!</h1>
+            <h1>Welcome to EnterConnected, {user.firstName}!</h1>
             <p>Organize activities with friends without worrying about your friends' availability or interest.</p>
             <p>Just add what activities you want to do when, and we'll notify you if your friends also added those activities and are available at those times.</p>
         </div>
@@ -35,8 +68,7 @@ export default function Home() {
                 <a
                     type="btn btn-primary"
                     className="btn btn-outline-primary btn-md"
-                    data-bs-toggle="modal"
-                    data-bs-target={"#newTrigger"}
+                    onClick={addActivityAvailability}
                 >
                     <svg
                         width="1em"
@@ -62,5 +94,5 @@ export default function Home() {
                 ))}
             </div>
         </div>
-    </div>;
+    </div>);
 }

@@ -1,12 +1,20 @@
 import NameLogo from "./Logo.png";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useHistory } from "react-router-dom";
+import { logout, useGlobalState } from './State';
 
 export default function Navbar() {
+    let history = useHistory();
+    const [user] = useGlobalState("user");
+
+    const startLogout = () => {
+        logout();
+        history.push("/")
+    }
 
     return (
         <div>
             <nav className="navbar navbar-expand-sm navbar-dark bg-dark justify-content-between mb-3 px-2">
-                <Link className="navbar-brand" to="/">
+                <Link className="navbar-brand" to="/home">
                     <img src={NameLogo} height="35" alt="projectideas" />
                 </Link>
                 <button
@@ -30,6 +38,16 @@ export default function Navbar() {
                             Scheduled activities
                         </NavLink>
                     </ul>
+                    {user.id != null && <ul className="navbar-nav ms-auto" id="navbarLogin">
+                        <li className="navbar-btn">
+                            <Link
+                                onClick={startLogout}
+                                className="btn btn-outline-danger my-2 my-sm-0"
+                            >
+                                Log out
+                            </Link>
+                        </li>
+                    </ul>}
                 </div>
             </nav>
         </div>

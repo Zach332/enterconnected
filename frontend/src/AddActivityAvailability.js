@@ -1,6 +1,7 @@
 import Navbar from './Navbar';
 import React from "react";
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 
 export default function AddNewActivityType() {
@@ -38,7 +39,8 @@ export default function AddNewActivityType() {
         <div>
             <Navbar />
             <div style={{padding: "50px"}}>
-                <h2>Add New Activity</h2>
+                <h2>Add your availability for an activity</h2>
+                <p>We'll add your availability to our database, but your availability will not be publicly posted. If a friend is available for the same activity at an overlapping time, we'll notify both of you, and add the activity to your {<Link to="/scheduled">scheduled activities</Link>}!</p>
                 <div>
                     <label className="form-label">Activity Name</label>
                     <input className="form-control" list="activeList" name="myBrowser" placeholder="Enter Name of Activity..." />
@@ -50,7 +52,7 @@ export default function AddNewActivityType() {
                 </div>
                 <hr />
                 <div>
-                    <label className="col-form-label-lg">Activity Time</label>
+                    <label className="col-form-label-lg">I'm available between...</label>
                     <br />
                     <label className="form-label">Start Date</label>
                     <input id="sd" value={form.sd} className="form-control" type="date" onChange={handleInputChange} />
