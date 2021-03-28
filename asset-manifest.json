@@ -1,24 +1,23 @@
 {
   "files": {
-    "main.css": "/enterconnected/static/css/main.a9d1c078.chunk.css",
-    "main.js": "/enterconnected/static/js/main.461954ce.chunk.js",
-    "main.js.map": "/enterconnected/static/js/main.461954ce.chunk.js.map",
-    "runtime-main.js": "/enterconnected/static/js/runtime-main.385b07c1.js",
-    "runtime-main.js.map": "/enterconnected/static/js/runtime-main.385b07c1.js.map",
-    "static/js/2.9d87de2f.chunk.js": "/enterconnected/static/js/2.9d87de2f.chunk.js",
-    "static/js/2.9d87de2f.chunk.js.map": "/enterconnected/static/js/2.9d87de2f.chunk.js.map",
-    "static/js/3.cbb5099f.chunk.js": "/enterconnected/static/js/3.cbb5099f.chunk.js",
-    "static/js/3.cbb5099f.chunk.js.map": "/enterconnected/static/js/3.cbb5099f.chunk.js.map",
-    "index.html": "/enterconnected/index.html",
-    "static/css/main.a9d1c078.chunk.css.map": "/enterconnected/static/css/main.a9d1c078.chunk.css.map",
-    "static/js/2.9d87de2f.chunk.js.LICENSE.txt": "/enterconnected/static/js/2.9d87de2f.chunk.js.LICENSE.txt",
-    "static/media/IntroPage.css": "/enterconnected/static/media/activity9.528f8232.jpg",
-    "static/media/logo.6ce24c58.svg": "/enterconnected/static/media/logo.6ce24c58.svg"
+    "main.css": "/static/css/main.c728da5c.chunk.css",
+    "main.js": "/static/js/main.7e5e5389.chunk.js",
+    "main.js.map": "/static/js/main.7e5e5389.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.97b7b6c5.js",
+    "runtime-main.js.map": "/static/js/runtime-main.97b7b6c5.js.map",
+    "static/js/2.f46b5962.chunk.js": "/static/js/2.f46b5962.chunk.js",
+    "static/js/2.f46b5962.chunk.js.map": "/static/js/2.f46b5962.chunk.js.map",
+    "static/js/3.b032de6b.chunk.js": "/static/js/3.b032de6b.chunk.js",
+    "static/js/3.b032de6b.chunk.js.map": "/static/js/3.b032de6b.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.c728da5c.chunk.css.map": "/static/css/main.c728da5c.chunk.css.map",
+    "static/js/2.f46b5962.chunk.js.LICENSE.txt": "/static/js/2.f46b5962.chunk.js.LICENSE.txt",
+    "static/media/IntroPage.css": "/static/media/activity9.528f8232.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.385b07c1.js",
-    "static/js/2.9d87de2f.chunk.js",
-    "static/css/main.a9d1c078.chunk.css",
-    "static/js/main.461954ce.chunk.js"
+    "static/js/runtime-main.97b7b6c5.js",
+    "static/js/2.f46b5962.chunk.js",
+    "static/css/main.c728da5c.chunk.css",
+    "static/js/main.7e5e5389.chunk.js"
   ]
 }
