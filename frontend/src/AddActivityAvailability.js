@@ -2,9 +2,10 @@ import Navbar from './Navbar';
 import React from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
-
+import { useGlobalState } from "./State";
 
 export default function AddNewActivityType() {
+    const [user] = useGlobalState("user");
     const [activities, setActivities] = React.useState([]);
     const [form, setForm] = React.useState({
         sd: "",
@@ -38,6 +39,13 @@ export default function AddNewActivityType() {
     return (
         <div>
             <Navbar />
+            {user.id == null && <div className="bg-secondary p-3 text-center w-50 mx-auto">
+                It looks like you haven't logged in. You won't be able to see or do much without an account.
+                <div className="p-2"/>
+                <Link className="btn btn-primary btn-md" to="/" role="button">
+                    Log in here!
+                </Link>
+            </div>}
             <div style={{padding: "0px 50px 0px 50px"}}>
                 <h2>Add your availability for an activity</h2>
                 <p>We'll add your availability to our database, but your availability will not be publicly posted. If a friend is available for the same activity at an overlapping time, we'll notify both of you, and add the activity to your {<Link to="/scheduled">scheduled activities</Link>}!</p>
