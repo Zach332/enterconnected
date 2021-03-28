@@ -10,9 +10,18 @@ export default function Home() {
     const [user] = useGlobalState("user");
     let history = useHistory();
     const [status, setStatus] = useState("loading");
+    const [activityAvailabilities, setActivityAvailabilities] = useState([]);
     useEffect(() => {
         const params = toParams(window.location.hash.replace(/^#/, ""));
         handleLogin(params);
+    }, []);
+
+    useEffect(() => {
+        axios
+            .get("api/activity-availability")
+            .then((response) => {
+                setActivityAvailabilities(response.data);
+            });
     }, []);
 
     const handleLogin = (data) => {
@@ -37,8 +46,6 @@ export default function Home() {
     const addActivityAvailability = () => {
         history.push("/addActivityAvailability")
     }
-
-    let activityAvailabilities = [];
 
     if(status == "loading") {
         return (
@@ -87,12 +94,13 @@ export default function Home() {
                 </a>
             </div>
         </div>
-        <div className="container">
+        {activityAvailabilities != null && activityAvailabilities.length > 0 ? <div className="container">
             <div className="row">
-                {activityAvailabilities.map((donation) => (
+                {activityAvailabilities.map((activity) => (
                     <div/>
                 ))}
             </div>
-        </div>
+        </div> :
+        <div className="ms-5">You don't have any upcoming activity availability. <Link to="/addActivityAvailability">Add your availability</Link>!</div>}
     </div>);
 }
