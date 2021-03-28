@@ -117,18 +117,19 @@ public class Database {
         // TODO: Include a list of the first name of each member that was invited
         final Long eventStartTimeFinal = new Long(eventStartTime);
         final Long eventEndTimeFinal = new Long(eventEndTime);
-        final List<String> participants = possiblyHappeningAvailabilities.stream()
+        List<String> participants = possiblyHappeningAvailabilities.stream()
             .map(a -> getUser(a.getUserId()).getFirstName())
             .collect(Collectors.toList());
         
         if (possiblyHappeningAvailabilities.size() >= requiredNumberOfParticipants) {
-            possiblyHappeningAvailabilities.forEach(availability -> {
-                availability.setHappening(true);
-                availability.setStartTime(eventStartTimeFinal);
-                availability.setEndTime(eventEndTimeFinal);
-                availability.setParticipants(participants);
-                activityAvailabilityDAO.updateActivityAvailability(availability);
-            });
+            for (ActivityAvailability finalActivity : possiblyHappeningAvailabilities) {
+                finalActivity.setHappening(true);
+                finalActivity.setStartTime(eventStartTimeFinal);
+                finalActivity.setEndTime(eventEndTimeFinal);
+                List<String> finalParticipants = participants;
+                finalParticipants.removeIf(p -> p.equals(getUser(newAvailability.getUserId()).getFirstName()));
+                finalActivity.setParticipants(finalParticipants);
+            }
         }
     }
 
