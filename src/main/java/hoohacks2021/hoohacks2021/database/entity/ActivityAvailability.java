@@ -1,5 +1,6 @@
 package hoohacks2021.hoohacks2021.database.entity;
 
+import java.util.List;
 import java.util.UUID;
 
 import com.datastax.oss.driver.api.mapper.annotations.ClusteringColumn;
@@ -25,6 +26,11 @@ public class ActivityAvailability {
     @CqlName("minimumnumberofparticipants")
     private int minimumNumberOfParticipants;
     private boolean happening;
+    private List<String> participants;
+    @CqlName("starttime")
+    private long startTime;
+    @CqlName("endtime")
+    private long endTime;
 
     public ActivityAvailability() { }
 
@@ -92,5 +98,29 @@ public class ActivityAvailability {
 
     public void setHappening(boolean happening) {
         this.happening = happening;
+    }
+
+    public List<String> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(List<String> participants) {
+        this.participants = participants;
+    }
+
+    public long getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(long startTime) {
+        this.startTime = startTime;
+    }
+
+    public long getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(long endTime) {
+        this.endTime = endTime;
     }
 }

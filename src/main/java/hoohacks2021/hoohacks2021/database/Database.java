@@ -82,6 +82,8 @@ public class Database {
         List<ActivityAvailability> activityAvailabilities = activityAvailabilityDAO.findByActivityName(newAvailability.getActivityName()).all();
         activityAvailabilities.sort((a1, a2) -> a2.getMinimumNumberOfParticipants() - a1.getMinimumNumberOfParticipants());
         
+        long eventStartTime = newAvailability.getRangeStartTime();
+        long eventEndTime = newAvailability.getRangeEndTime();
         ArrayList<ActivityAvailability> possiblyHappeningAvailabilities = new ArrayList<>();
         possiblyHappeningAvailabilities.add(newAvailability);
         int requiredNumberOfParticipants = newAvailability.getMinimumNumberOfParticipants();
@@ -98,7 +100,13 @@ public class Database {
                     availability.getMinimumNumberOfParticipants() > requiredNumberOfParticipants - 1
                 ) {
                     break;
-                } 
+                }
+                if (availability.getRangeStartTime() > eventStartTime) {
+                    eventStartTime = availability.getRangeStartTime();
+                }
+                if (availability.getRangeEndTime() > eventEndTime) {
+                    eventEndTime = availability.getRangeEndTime();
+                }
                 if (availability.getMinimumNumberOfParticipants() > requiredNumberOfParticipants) {
                     requiredNumberOfParticipants = availability.getMinimumNumberOfParticipants();
                 }
@@ -106,9 +114,19 @@ public class Database {
             }
         }
 
+        // TODO: Include a list of the first name of each member that was invited
+        final Long eventStartTimeFinal = new Long(eventStartTime);
+        final Long eventEndTimeFinal = new Long(eventEndTime);
+        final List<String> participants = possiblyHappeningAvailabilities.stream()
+            .map(a -> getUser(a.getUserId()).getFirstName())
+            .collect(Collectors.toList());
+        
         if (possiblyHappeningAvailabilities.size() >= requiredNumberOfParticipants) {
             possiblyHappeningAvailabilities.forEach(availability -> {
                 availability.setHappening(true);
+                availability.setStartTime(eventStartTimeFinal);
+                availability.setEndTime(eventEndTimeFinal);
+                availability.setParticipants(participants);
                 activityAvailabilityDAO.updateActivityAvailability(availability);
             });
         }
