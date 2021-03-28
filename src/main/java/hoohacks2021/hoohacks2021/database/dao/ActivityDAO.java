@@ -15,4 +15,7 @@ public interface ActivityDAO {
 
     @Select
     PagingIterable<Activity> all();
+
+    @Select
+    Activity findByName(String name);
 }

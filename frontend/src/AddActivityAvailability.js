@@ -3,10 +3,12 @@ import React from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
 import { useGlobalState } from "./State";
+import CheckMark from "./check.svg";
 
 export default function AddNewActivityType() {
     const [user] = useGlobalState("user");
     const [activities, setActivities] = React.useState([]);
+    const [status, setStatus] = React.useState("notSubmitted")
     const [form, setForm] = React.useState({
         act: "",
         mp: "2",
@@ -40,7 +42,30 @@ export default function AddNewActivityType() {
                 rangeEndTime: Date.parse(form.ed + " " + form.et), // end day / time in epoch time
                 minimumNumberOfParticipants: form.mp,
         });
+        setStatus("submitted")
         event.preventDefault();
+    }
+
+    if(status == "submitted") {
+        return (
+            <div>
+                <Navbar />
+                <img
+                    src={CheckMark}
+                    className="mx-auto d-block p-4"
+                />
+                <div className="text-center">
+                    Your activity availability has been successfully submitted! 
+                    <div></div>
+                    <Link
+                        className="btn btn-link btn-lg"
+                        to="/home"
+                    >
+                        Go to the homepage
+                    </Link>
+                </div>
+            </div>
+        )
     }
 
     return (

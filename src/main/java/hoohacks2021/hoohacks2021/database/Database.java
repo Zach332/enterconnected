@@ -1,6 +1,7 @@
 package hoohacks2021.hoohacks2021.database;
 
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -71,8 +72,46 @@ public class Database {
 
     // Activity availabilities
 
-    public void addActivityAvailability(ActivityAvailability activityAvailability) {
-        activityAvailabilityDAO.save(activityAvailability);
+    public void addActivityAvailability(ActivityAvailability newAvailability) {
+        activityAvailabilityDAO.save(newAvailability);
+
+        if (activityDAO.findByName(newAvailability.getActivityName()) == null) {
+            activityDAO.save(new Activity(newAvailability.getActivityName()));
+        }
+
+        List<ActivityAvailability> activityAvailabilities = activityAvailabilityDAO.findByActivityName(newAvailability.getActivityName()).all();
+        activityAvailabilities.sort((a1, a2) -> a2.getMinimumNumberOfParticipants() - a1.getMinimumNumberOfParticipants());
+        
+        ArrayList<ActivityAvailability> possiblyHappeningAvailabilities = new ArrayList<>();
+        possiblyHappeningAvailabilities.add(newAvailability);
+        int requiredNumberOfParticipants = newAvailability.getMinimumNumberOfParticipants();
+        for (ActivityAvailability availability : activityAvailabilities) {
+            if (availability.getId().equals(newAvailability.getId())) {
+                continue;
+            }
+            if (
+                availability.getRangeStartTime() < newAvailability.getRangeEndTime() && 
+                availability.getRangeEndTime() > newAvailability.getRangeStartTime()
+            ) {
+                if (
+                    possiblyHappeningAvailabilities.size() >= requiredNumberOfParticipants &&
+                    availability.getMinimumNumberOfParticipants() > requiredNumberOfParticipants - 1
+                ) {
+                    break;
+                } 
+                if (availability.getMinimumNumberOfParticipants() > requiredNumberOfParticipants) {
+                    requiredNumberOfParticipants = availability.getMinimumNumberOfParticipants();
+                }
+                possiblyHappeningAvailabilities.add(availability);
+            }
+        }
+
+        if (possiblyHappeningAvailabilities.size() >= requiredNumberOfParticipants) {
+            possiblyHappeningAvailabilities.forEach(availability -> {
+                availability.setHappening(true);
+                activityAvailabilityDAO.updateActivityAvailability(availability);
+            });
+        }
     }
 
     public List<ActivityAvailability> getActivityAvailabilitiesForUser(String userId) {
