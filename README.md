@@ -1,4 +1,4 @@
-# HooHacks2021
+# EnterConnected
 
 Looking for an easy way to organize activities with friends without having to worry about availability and interests? Looking to connect with friends, but unsure of the best way to reach out? EnterConnected is a free and easy way to create activities for all your friends to see, eliminating the hassle of scheduling.
 
