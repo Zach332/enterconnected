@@ -3,7 +3,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./theme.scss";
 import IntroPage from "./IntroPage"
 import Home from './Home';
-import AddNewActivityType from './AddNewActivityType';
+import AddActivityAvailability from './AddActivityAvailability';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         <div className="App">
             <Switch>
                 <Route path="/" exact component={IntroPage} />
-                <Route path="/newActivityType" exact component={AddNewActivityType} />
+                <Route path="/addActivityAvailability" exact component={AddActivityAvailability} />
                 <Route component={Home} />
             </Switch>
         </div>

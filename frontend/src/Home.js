@@ -34,6 +34,10 @@ export default function Home() {
         }
     };
 
+    const addActivityAvailability = () => {
+        history.push("/addActivityAvailability")
+    }
+
     let activityAvailabilities = [];
 
     if(status == "loading") {
@@ -64,8 +68,7 @@ export default function Home() {
                 <a
                     type="btn btn-primary"
                     className="btn btn-outline-primary btn-md"
-                    data-bs-toggle="modal"
-                    data-bs-target={"#newTrigger"}
+                    onClick={addActivityAvailability}
                 >
                     <svg
                         width="1em"

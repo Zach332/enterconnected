@@ -3,7 +3,7 @@ import React from "react";
 import axios from "axios";
 
 
-export default function AddNewActivityType() {
+export default function AddActivityAvailability() {
     const [activities, setActivities] = React.useState([])
 
     React.useEffect(() => {
@@ -18,7 +18,7 @@ export default function AddNewActivityType() {
         <div>
             <Navbar />
             <div style={{padding: "50px"}}>
-                <h2>Add New Activity</h2>
+                <h2>Add your availability for an activity</h2>
                 <div>
                     <label className="form-label">Activity Name</label>
                     <input className="form-control" list="activeList" name="myBrowser" placeholder="Enter Name of Activity..." />
