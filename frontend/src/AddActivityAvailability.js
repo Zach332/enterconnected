@@ -26,8 +26,8 @@ export default function AddNewActivityType() {
     const handleInputChange = (event) => {
         const target = event.target;
         const name = target.id;
-        setForm((idea) => ({
-            ...idea,
+        setForm((form) => ({
+            ...form,
             [name]: target.value,
         }));
     };
@@ -45,7 +45,7 @@ export default function AddNewActivityType() {
                 <p>We'll add your availability to our database, but your availability will not be publicly posted. If a friend is available for the same activity at an overlapping time, we'll notify both of you, and add the activity to your {<Link to="/scheduled">scheduled activities</Link>}!</p>
                 <div>
                     <label className="form-label">Activity Name</label>
-                    <input className="form-control" id="act" value={form.act} list="activeList" name="myBrowser" placeholder="Enter Name of Activity..." />
+                    <input className="form-control" id="act" value={form.act} list="activeList" placeholder="Enter Name of Activity..." onChange={handleInputChange} />
                     <datalist id="activeList">
                         {activities.map((activity) => (
                             <option key={activity} value={activity} />
@@ -55,7 +55,7 @@ export default function AddNewActivityType() {
                 <hr />
                 <div>
                     <label className="form-label">Minimum Number of People</label>
-                    <input className="form-control" type="number" min="2" id="mp" value={form.mp} placeholder="Enter Number (including yourself)" />
+                    <input className="form-control" type="number" min="2" id="mp" value={form.mp} placeholder="Enter Number (including yourself)" onChange={handleInputChange} />
                 </div>
                 <hr />
                 <div>
