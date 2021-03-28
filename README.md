@@ -25,5 +25,3 @@ Upon logging into [EnterConnected](https://enterconnected.tech/#/) through a Goo
 The frontend for EnterConnected is built with React and hosted on Github Pages with a custom domain ([enterconnected.tech](https://enterconnected.tech/#/)) provided by Domain.com. We use Google Cloud Platform's OAuth 2.0 API for user logins.
 
 The backend for EnterConnected is built with Java Spring Boot and hosted on Google Cloud Platform App Engine. It connects to a database which is created using DataStax Astra's Cassandra-made-easy service.
-
-## Resources Used
