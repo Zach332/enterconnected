@@ -40,7 +40,7 @@ export default function AddNewActivityType() {
     return (
         <div>
             <Navbar />
-            <div style={{padding: "50px"}}>
+            <div style={{padding: "0px 50px 0px 50px"}}>
                 <h2>Add your availability for an activity</h2>
                 <p>We'll add your availability to our database, but your availability will not be publicly posted. If a friend is available for the same activity at an overlapping time, we'll notify both of you, and add the activity to your {<Link to="/scheduled">scheduled activities</Link>}!</p>
                 <div>

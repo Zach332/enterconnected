@@ -4,6 +4,7 @@ import "./theme.scss";
 import IntroPage from "./IntroPage"
 import Home from './Home';
 import AddActivityAvailability from './AddActivityAvailability';
+import ScheduledActivites from "./ScheduledActivities"
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
             <Switch>
                 <Route path="/" exact component={IntroPage} />
                 <Route path="/addActivityAvailability" exact component={AddActivityAvailability} />
+                <Route path="/scheduled" exact component={ScheduledActivites} />
                 <Route component={Home} />
             </Switch>
         </div>
