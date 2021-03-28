@@ -8,7 +8,7 @@ We built EnterConnected to provide an easy way to schedule activities. We hope t
 
 ## What it does
 
-Upon logging into [EnterConnected] (https://enterconnected.tech/#/) through a Google account, users will be taken to the EnterConnected homepage where all of their current activities will be listed. To create new activities, the user can click on the "Add activity availability" button and fill out information for the new activity. Once an activity reaches the the minimum number of people required, the activity will appear in the "Scheduled activities" page, which is accessibile through the tab on the navbar.
+Upon logging into [EnterConnected](https://enterconnected.tech/#/) through a Google account, users will be taken to the EnterConnected homepage where all of their current activities will be listed. To create new activities, the user can click on the "Add activity availability" button and fill out information for the new activity. Once an activity reaches the the minimum number of people required, the activity will appear in the "Scheduled activities" page, which is accessibile through the tab on the navbar.
 
 ## What's next for EnterConnected
 
