@@ -129,6 +129,7 @@ public class Database {
                 List<String> finalParticipants = participants;
                 finalParticipants.removeIf(p -> p.equals(getUser(newAvailability.getUserId()).getFirstName()));
                 finalActivity.setParticipants(finalParticipants);
+                activityAvailabilityDAO.updateActivityAvailability(finalActivity);
             }
         }
     }
