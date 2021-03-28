@@ -16,6 +16,7 @@ function App() {
                 <Route path="/scheduled" exact component={ScheduledActivites} />
                 <Route component={Home} />
             </Switch>
+            <div className="p-3"></div>
         </div>
     </Router>
   );
