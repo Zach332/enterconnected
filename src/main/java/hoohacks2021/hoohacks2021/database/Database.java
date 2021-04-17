@@ -1,5 +1,9 @@
 package hoohacks2021.hoohacks2021.database;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +13,7 @@ import java.util.stream.Collectors;
 import com.datastax.oss.driver.api.core.CqlSession;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 
 import hoohacks2021.hoohacks2021.database.dao.ActivityAvailabilityDAO;
@@ -28,12 +33,16 @@ public class Database {
     ActivityAvailabilityDAO activityAvailabilityDAO;
 
     public Database(
-        @Value("${hoohacks2021.astra.secureConnectionLocation}") String secureConnectLocation, 
         @Value("${hoohacks2021.astra.username}") String username, 
-        @Value("${hoohacks2021.astra.password}") String password
-    ) {
+        @Value("${hoohacks2021.astra.password}") String password,
+        @Value("classpath:secure-connect-hoohacks2021.zip") Resource secureConnect
+    ) throws IOException {
+        File secureConnectFile = File.createTempFile("secure-connect", ".tmp");
+        secureConnectFile.deleteOnExit();
+        secureConnect.getInputStream().transferTo(new FileOutputStream(secureConnectFile));
+
         session = CqlSession.builder()
-            .withCloudSecureConnectBundle(Paths.get(secureConnectLocation))
+            .withCloudSecureConnectBundle(secureConnectFile.toPath())
             .withAuthCredentials(username, password)
             .withKeyspace("production")
             .build();
