@@ -12,7 +12,7 @@ export default function Home() {
 
     useEffect(() => {
         axios
-            .get("https://hoohacks2021-308917.ue.r.appspot.com/api/activity-availability")
+            .get("https://enterconnected.herokuapp.com/api/activity-availability")
             .then((response) => {
                 setActivityAvailabilities(response.data.filter(
                     (availability) => availability.happening

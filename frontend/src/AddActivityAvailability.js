@@ -20,7 +20,7 @@ export default function AddNewActivityType() {
 
     React.useEffect(() => {
         axios
-            .get("https://hoohacks2021-308917.ue.r.appspot.com/api/activities")
+            .get("https://enterconnected.herokuapp.com/api/activities")
             .then((response) => {
                 setActivities(response.data)
             });
@@ -36,7 +36,7 @@ export default function AddNewActivityType() {
     };
 
     const submitButtonClicked = (event) => {
-        axios.post("https://hoohacks2021-308917.ue.r.appspot.com/api/activity-availability/new", {
+        axios.post("https://enterconnected.herokuapp.com/api/activity-availability/new", {
                 activityName: form.act,
                 rangeStartTime: Date.parse(form.sd + " " + form.st), // start day / time in epoch time
                 rangeEndTime: Date.parse(form.ed + " " + form.et), // end day / time in epoch time
