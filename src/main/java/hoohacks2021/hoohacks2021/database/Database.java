@@ -114,9 +114,8 @@ public class Database {
             }
         }
 
-        // TODO: Include a list of the first name of each member that was invited
-        final Long eventStartTimeFinal = new Long(eventStartTime);
-        final Long eventEndTimeFinal = new Long(eventEndTime);
+        final long eventStartTimeFinal = eventStartTime;
+        final long eventEndTimeFinal = eventEndTime;
         List<String> participants = possiblyHappeningAvailabilities.stream()
             .map(a -> getUser(a.getUserId()).getFirstName())
             .collect(Collectors.toList());
